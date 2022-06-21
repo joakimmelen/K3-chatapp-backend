@@ -26,11 +26,15 @@ const db = new sqlite3.Database("./database.sqlite", (error) => {
         CREATE TABLE IF NOT EXISTS messages (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         message TEXT NOT NULL,
+        user_name TEXT NOT NULL,
         room_id INTEGER NOT NULL,
         user_id INTEGER NOT NULL,
+        FOREIGN KEY (user_name)
+            REFERENCES users (name)
+            ON DELETE CASCADE,
         FOREIGN KEY (room_id)
             REFERENCES rooms (id)
-            ON DELETE CASCADE
+            ON DELETE CASCADE,
         FOREIGN KEY (user_id)
             REFERENCES users (id)
             ON DELETE CASCADE

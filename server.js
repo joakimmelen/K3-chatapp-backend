@@ -35,6 +35,7 @@ function getRooms() {
         })
     })
 }
+
 function getUsers() { 
     const sql = `SELECT * FROM users`
 
@@ -48,16 +49,18 @@ function getUsers() {
         })
     })
 }
-function getMessages() { 
-    const sql = `SELECT * FROM messages`
+
+function getMessages(room) { 
+    const sql = `SELECT * FROM messages WHERE room_id = ?`
 
     return new Promise((resolve, reject) => {
-        db.all(sql, (error, rows) => {
+        db.all(sql, room, (error, rows) => {
             if (error) {
                 console.error(error.message)
                 reject(error)
             }
             resolve(rows)
+            console.log(rows)
         })
     })
 }
@@ -66,14 +69,15 @@ io.on(`connection`, (socket) => {
     console.log(`User with id ${socket.id} has connected`);
 
     // Rooms
-    socket.on("join_room", (room) => {
+    socket.on("join_room", async (room) => {
         // room: string med rumnamnet
         console.log(`${socket.id} has joined ${room}`)
         socket.join(room);
     
         io.to(room).emit("joined_room", socket.id);
         // const users = getUsers();
-        console.log(getMessages());
+        const messages = await getMessages(room);
+        socket.emit("welcome_to_room", messages)
       })
     
       socket.on("leave_room", (data) => {
@@ -86,17 +90,36 @@ io.on(`connection`, (socket) => {
     
       io.emit("new_client", "A new client has joined");
     
-      socket.on("message", (data) => {
-        const sql = `INSERT INTO messages (message, room_id, user_id) VALUES (?, ?, ?);`
+      socket.on("message", async (data, user, room) => {
+        const sql = `INSERT INTO messages (message, user_name, room_id, user_id) VALUES (?, ?, ?, ?);`
         console.log(`${socket.id} has sent ${data}`)
-        db.run(sql, [data, "room1", socket.id], (error) => {
-            if (error) reject(error)
+        db.run(sql, [data, user, room, socket.id], (error) => {
+            if (error) console.error(error.message)
         })
-        const messages = getMessages();
-        console.log(getMessages())
-        socket.broadcast.emit("messages", messages)
+        const newMessage = {
+            message: data,
+            room: room,
+            user: user,
+            userId: socket.id
+        }
+        socket.broadcast.emit("new_message", newMessage)
       })
     
+      //data: string
+    //   socket.on("new_message", (data) => {
+    //     const sql = "";
+    //     db.run(sql);
+
+    //     const newMessage = {
+    //         message: data,
+    //         room: "room1",
+    //         user: socket.id
+    //     }
+
+    //     socket.broadcast.emit("new_message", newMessage)
+
+    //   })
+
       // data: { message: "", to: "" }
       socket.on("direct_message", (data) => {
         socket.to(data.to).emit("message", data.message)
