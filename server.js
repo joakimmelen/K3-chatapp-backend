@@ -123,7 +123,7 @@ io.on(`connection`, (socket) => {
         io.to(room).emit("joined_room", socket.id);
         // const users = getUsers();
         const messages = await getMessages(room);
-        socket.emit("welcome_to_room", messages)
+        socket.emit("welcome_to_room", [messages, room])
         } else {
             socket.emit("room_error", "No such room, create one or try another name")
         }
@@ -133,7 +133,6 @@ io.on(`connection`, (socket) => {
         // data: string med rumnamnet
         console.log(`${socket.id} has left room ${data}`)
         socket.leave(data);
-    
         console.log(socket.rooms);
       })
     
@@ -164,7 +163,7 @@ io.on(`connection`, (socket) => {
       })
     
       socket.on("message", async (date, data, user, room) => {
-        const sql = `INSERT INTO messages (date, message, user_name, room_id, user_id) VALUES (?, ?, ?, ?, ?);`
+        const sql = `INSERT INTO messages (date, message, user, room_id, user_id) VALUES (?, ?, ?, ?, ?);`
         if (!user) {
             console.log("ERROR_Must be logged in as user")
         } else {
