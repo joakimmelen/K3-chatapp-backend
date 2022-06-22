@@ -135,6 +135,24 @@ io.on(`connection`, (socket) => {
         socket.leave(data);
         console.log(socket.rooms);
       })
+
+      socket.on("remove_room", async (room) => {
+        const sql = `DELETE FROM rooms WHERE name = ?`
+        const rooms = await getRooms();
+        if (rooms.filter(e => e.name === room).length > 0) {
+            db.run(sql, room, (error) => {
+                if (error) console.error(error.message)
+            })
+        } else {
+            console.log("No such room");
+            socket.emit("error_remove_room", "No such room")
+        }
+      })
+
+      socket.on("get_rooms", async () => {
+        const rooms = await getRooms();
+        socket.emit("all_rooms", rooms)
+      })
     
       io.emit("new_client", "A new client has joined");
 
