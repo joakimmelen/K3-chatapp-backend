@@ -32,6 +32,7 @@ function getRooms() {
                 reject(error)
             }
             resolve(rows)
+            // console.log(rows)
         })
     })
 }
@@ -69,6 +70,19 @@ io.on(`connection`, (socket) => {
     console.log(`User with id ${socket.id} has connected`);
 
     // Rooms
+    socket.on("create_room", async (room) => {
+        const sql = `INSERT INTO rooms (name) VALUES (?)`
+        const rooms = await getRooms();
+        if (!rooms.filter(e => e.name === room).length > 0) {
+            db.run(sql, room, (error) => {
+                if (error) console.error(error.message)
+            }) 
+            console.log(`Created room: ${room}`)
+        } else {
+            console.log("Room already exists")
+        }
+    })
+
     socket.on("join_room", async (room) => {
         // room: string med rumnamnet
         console.log(`${socket.id} has joined ${room}`)
@@ -96,13 +110,15 @@ io.on(`connection`, (socket) => {
         db.run(sql, [data, user, room, socket.id], (error) => {
             if (error) console.error(error.message)
         })
-        const newMessage = {
-            message: data,
-            room: room,
-            user: user,
-            userId: socket.id
-        }
-        socket.broadcast.emit("new_message", newMessage)
+        // const newMessage = {
+        //     message: data,
+        //     room: room,
+        //     user: user,
+        //     userId: socket.id
+        // }
+        // socket.to(room).emit("new_message", newMessage)
+        const poppedMess = getMessages(room);
+        socket.to(room).emit("new_message", poppedMess)
       })
     
       //data: string
