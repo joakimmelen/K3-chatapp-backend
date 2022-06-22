@@ -1,6 +1,7 @@
 const express = require(`express`);
 const app = express();
 const http = require(`http`);
+const fs = require("fs");
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server, {
@@ -61,10 +62,37 @@ function getMessages(room) {
                 reject(error)
             }
             resolve(rows)
-            console.log(rows)
         })
     })
 }
+
+function straightToTheLog(data) {
+    const fsData = JSON.stringify(data);
+    if (data.message) {
+        fs.appendFile("DOOM_LOG.txt", fsData + "\n", (error) => {
+            if (error) {
+                return (
+                console.log("Error writing to DOOM_LOG.txt")
+                )
+            } else {
+               return console.log("Attemp to store data in DOOM_LOG.txt was successful")
+            }
+        })
+    }
+}
+
+io.use((socket, next) => {
+    socket.on("message", (date, input, user, room) => {
+        const data = {
+            date: date,
+            message: input,
+            user: user,
+            room: room
+        }
+      straightToTheLog(data);
+    });
+    next();
+  });
 
 io.on(`connection`, (socket) => {
     console.log(`User with id ${socket.id} has connected`);
@@ -78,13 +106,17 @@ io.on(`connection`, (socket) => {
                 if (error) console.error(error.message)
             }) 
             console.log(`Created room: ${room}`)
+            socket.emit("room_created", room)
         } else {
             console.log("Room already exists")
+            socket.emit("room_error", `Error creating room "${room}", it might already exist`)
         }
     })
 
     socket.on("join_room", async (room) => {
         // room: string med rumnamnet
+        const rooms = await getRooms();
+        if (rooms.filter(e => e.name === room).length > 0) {
         console.log(`${socket.id} has joined ${room}`)
         socket.join(room);
     
@@ -92,6 +124,9 @@ io.on(`connection`, (socket) => {
         // const users = getUsers();
         const messages = await getMessages(room);
         socket.emit("welcome_to_room", messages)
+        } else {
+            socket.emit("room_error", "No such room, create one or try another name")
+        }
       })
     
       socket.on("leave_room", (data) => {
@@ -103,22 +138,48 @@ io.on(`connection`, (socket) => {
       })
     
       io.emit("new_client", "A new client has joined");
+
+      socket.on("create_user", async (user) => {
+        const sql = `INSERT INTO users (name) VALUES (?)`
+        const users = await getUsers();
+        if (!users.filter(e => e.name === user).length >0) {
+            db.run(sql, user, (error) => {
+                if (error) console.error(error.message)
+            })
+            console.log(`Created user: ${user}`)
+            socket.emit("user_created", user)
+        } else {
+            console.log("User already exists")
+            socket.emit("user_error", `User with the name "${user}" already taken`)
+        }
+      })
+
+      socket.on("login_user", async (user) => {
+        const users = await getUsers();
+        if (!users.filter(e => e.name === user).length > 0) {
+            socket.emit("error_loggedin", "User does not exist")
+        } else {
+            socket.emit("user_loggedin", user)
+        }
+      })
     
-      socket.on("message", async (data, user, room) => {
-        const sql = `INSERT INTO messages (message, user_name, room_id, user_id) VALUES (?, ?, ?, ?);`
-        console.log(`${socket.id} has sent ${data}`)
-        db.run(sql, [data, user, room, socket.id], (error) => {
+      socket.on("message", async (date, data, user, room) => {
+        const sql = `INSERT INTO messages (date, message, user_name, room_id, user_id) VALUES (?, ?, ?, ?, ?);`
+        if (!user) {
+            console.log("ERROR_Must be logged in as user")
+        } else {
+        db.run(sql, [date, data, user, room, socket.id], (error) => {
             if (error) console.error(error.message)
+            const newMessage = {
+                date: date,
+                message: data,
+                room: room,
+                user: user,
+                userId: socket.id
+            }
+            socket.to(room).emit("new_message", newMessage)
         })
-        // const newMessage = {
-        //     message: data,
-        //     room: room,
-        //     user: user,
-        //     userId: socket.id
-        // }
-        // socket.to(room).emit("new_message", newMessage)
-        const poppedMess = getMessages(room);
-        socket.to(room).emit("new_message", poppedMess)
+    }
       })
     
       //data: string

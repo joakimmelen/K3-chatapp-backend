@@ -1,0 +1,15 @@
+{"date":"2022-6-22 16:29:0","message":"Tjena","user":"123","room":"123"}
+{"date":"2022-6-22 16:29:4","message":"hehe","user":"123","room":"123"}
+{"date":"2022-6-22 16:29:17","message":"Tjock nice","user":"123","room":"123"}
+{"date":"2022-6-22 16:29:31","message":"I SHALL END THOU","user":"DOOM_boii","room":"123"}
+{"date":"2022-6-22 16:29:37","message":"doooooom","user":"DOOM_boii","room":"123"}
+{"date":"2022-6-22 16:47:59","message":"hehehehe","user":"123","room":123}
+{"date":"2022-6-22 16:54:6","message":"hehehej","user":"123","room":123}
+{"date":"2022-6-22 16:54:35","message":"???","user":"örjan","room":123}
+{"date":"2022-6-22 16:55:30","message":"Flex","user":"Börje","room":123}
+{"date":"2022-6-22 16:56:47","message":"What","user":"123","room":123}
+{"date":"2022-6-22 16:58:0","message":"hej","user":"123","room":123}
+{"date":"2022-6-22 16:59:5","message":"Tja","user":"Börje","room":123}
+{"date":null,"message":"hehehe","user":"123","room":123}
+{"date":"2022-6-22 17:3:30","message":"tjabbbba","user":"Börje","room":123}
+{"date":"2022-6-22 17:5:48","message":"fakkkk","user":"123","room":123}

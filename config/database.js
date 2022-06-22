@@ -24,7 +24,7 @@ const db = new sqlite3.Database("./database.sqlite", (error) => {
         ,
         messages: `
         CREATE TABLE IF NOT EXISTS messages (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date TEXT PRIMARY KEY,
         message TEXT NOT NULL,
         user_name TEXT NOT NULL,
         room_id INTEGER NOT NULL,
@@ -51,8 +51,8 @@ const db = new sqlite3.Database("./database.sqlite", (error) => {
         if (error) console.error(error.message)
     })
 
-    const insertUser = "INSERT INTO users (name) VALUES (?)"
-    const insertRoom = "INSERT INTO rooms (name) VALUES (?)"
+    // const insertUser = "INSERT INTO users (name) VALUES (?)"
+    // const insertRoom = "INSERT INTO rooms (name) VALUES (?)"
     // db.run(insertUser, "Jocke")
     // db.run(insertUser, "Nils")
     // db.run(insertUser, "Oscar")
