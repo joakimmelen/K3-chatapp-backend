@@ -1,61 +1,13 @@
-{"date":"2022-6-22 16:29:0","message":"Tjena","user":"123","room":"123"}
-{"date":"2022-6-22 16:29:4","message":"hehe","user":"123","room":"123"}
-{"date":"2022-6-22 16:29:17","message":"Tjock nice","user":"123","room":"123"}
-{"date":"2022-6-22 16:29:31","message":"I SHALL END THOU","user":"DOOM_boii","room":"123"}
-{"date":"2022-6-22 16:29:37","message":"doooooom","user":"DOOM_boii","room":"123"}
-{"date":"2022-6-22 16:47:59","message":"hehehehe","user":"123","room":123}
-{"date":"2022-6-22 16:54:6","message":"hehehej","user":"123","room":123}
-{"date":"2022-6-22 16:54:35","message":"???","user":"örjan","room":123}
-{"date":"2022-6-22 16:55:30","message":"Flex","user":"Börje","room":123}
-{"date":"2022-6-22 16:56:47","message":"What","user":"123","room":123}
-{"date":"2022-6-22 16:58:0","message":"hej","user":"123","room":123}
-{"date":"2022-6-22 16:59:5","message":"Tja","user":"Börje","room":123}
-{"date":null,"message":"hehehe","user":"123","room":123}
-{"date":"2022-6-22 17:3:30","message":"tjabbbba","user":"Börje","room":123}
-{"date":"2022-6-22 17:5:48","message":"fakkkk","user":"123","room":123}
-{"date":"2022-6-22 17:37:12","message":"hejhej","user":"123","room":"123"}
-{"date":"2022-6-22 17:37:22","message":"fan","user":"123","room":"123"}
-{"date":"2022-6-22 17:39:18","message":"hmmm","user":"123","room":"123"}
-{"date":"2022-6-22 17:42:23","message":"hmm","user":"123","room":"123"}
-{"date":"2022-6-22 17:42:31","message":"hmm","user":"123","room":"123"}
-{"date":"2022-6-22 17:48:13","message":"hehe","user":"123","room":"123"}
-{"date":"2022-6-22 17:48:44","message":"faaade","user":"456","room":"123"}
-{"date":"2022-6-22 17:49:48","message":"what","user":"123","room":"123"}
-{"date":"2022-6-22 17:49:55","message":"hehehe","user":"123","room":"123"}
-{"date":"2022-6-22 17:59:1","message":"a","user":"Kalle","room":"123"}
-{"date":"2022-6-22 18:20:5","message":"Hj","user":"123","room":"123"}
-{"date":"2022-6-22 18:20:16","message":"123","user":"Kalle","room":"123"}
-{"date":"2022-6-22 18:21:12","message":"asd","user":"Kalle","room":"123"}
-{"date":"2022-6-22 18:21:25","message":"hej","user":"123","room":"123"}
-{"date":"2022-6-22 18:23:14","message":"Hej","user":"Sara","room":"self"}
-{"date":"2022-6-22 18:25:50","message":"Hej älskling","user":"Sara","room":"brinken"}
-{"date":"2022-6-22 18:32:55","message":"hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:32:37","message":"Hej","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:33:5","message":"Hej älskling ","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:33:12","message":"Hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:34:57","message":"hihi","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:35:22","message":"<3","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:56:41","message":"Hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:57:5","message":"hihi","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:57:8","message":"Classy","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:57:27","message":"hej nils","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:58:52","message":"hej","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:59:4","message":"hej","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:59:26","message":"Hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:59:29","message":"Hej","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:59:31","message":"Älskar dig <3","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 18:59:43","message":"Yayy, me u 2 <3 ","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 18:59:49","message":"hehe","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 19:47:11","message":"Mr mr ","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 19:53:34","message":"Hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 19:53:42","message":"hihihi","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 19:59:42","message":"hej","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 20:6:54","message":"Tjenare","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 20:7:6","message":"Hej elskling","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 20:7:9","message":"Hur mår du","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 20:7:11","message":"va gör ud? ","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 20:7:12","message":":D","user":"Jocke","room":"Brinken"}
-{"date":"2022-6-22 20:7:13","message":"CHILLIN BADILLIN, lols,. us? ","user":"Sara","room":"Brinken"}
-{"date":"2022-6-22 20:29:40","message":"pooper","user":"Jocke","room":"flies"}
-{"date":"2022-6-22 20:32:48","message":"trooper","user":"Jocke","room":"flies"}
-{"date":"2022-6-22 20:32:49","message":"yes det funka, gött","user":"Jocke","room":"flies"}
+{"date":"2022-6-27 12:42:21","message":"Tja","user":"Sara","room":"fetcha"}
+{"date":"2022-6-27 12:41:31","message":"Hmmm","user":"Joakim","room":"fetcha"}
+{"date":"2022-6-27 12:42:26","message":"Hej babe","user":"Joakim","room":"fetcha"}
+{"date":"2022-6-27 12:42:29","message":"hej","user":"Sara","room":"fetcha"}
+{"date":"2022-6-27 12:42:41","message":"hehe","user":"Joakim","room":"fetcha"}
+{"date":"2022-6-27 12:42:47","message":"va händer då","user":"Sara","room":"fetcha"}
+{"date":"2022-6-27 12:42:50","message":"hej","user":"Joakim","room":"fetcha"}
+{"date":"2022-6-27 12:43:53","message":"§1213131","user":"Sara","room":"fetcha"}
+{"date":"2022-6-27 12:44:39","message":"Så kul med nya chatten! ","user":"Nils","room":"FEA21"}
+{"date":"2022-6-27 12:44:46","message":"Hihi eller hur ","user":"Oscar","room":"FEA21"}
+{"date":"2022-6-27 12:44:49","message":"visst","user":"Oscar","room":"FEA21"}
+{"date":"2022-6-27 12:45:2","message":"Vad är detta?","user":"Nils","room":"brinken"}
+{"date":"2022-6-27 12:45:11","message":"Vet ej faktiskt","user":"Oscar","room":"brinken"}

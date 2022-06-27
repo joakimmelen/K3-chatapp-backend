@@ -37,6 +37,20 @@ function getRooms() {
         })
     })
 }
+function getRoomsByName() { 
+    const sql = `SELECT name FROM rooms`
+
+    return new Promise((resolve, reject) => {
+        db.all(sql, (error, rows) => {
+            if (error) {
+                console.error(error.message)
+                reject(error)
+            }
+            resolve(rows)
+            // console.log(rows)
+        })
+    })
+}
 
 function getUsers() { 
     const sql = `SELECT * FROM users`
@@ -150,7 +164,7 @@ io.on(`connection`, (socket) => {
       })
 
       socket.on("get_rooms", async () => {
-        const rooms = await getRooms();
+        const rooms = await getRoomsByName();
         socket.emit("all_rooms", rooms)
       })
     
